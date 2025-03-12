@@ -2,7 +2,7 @@
 
 ![Flutter](https://img.shields.io/badge/Flutter-3.0-blue)
 ![Dart](https://img.shields.io/badge/Dart-2.17-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+![License](https://img.shields.io/badge/License-GNU-green)
 
 ## Overview
 
