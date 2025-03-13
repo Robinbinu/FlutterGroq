@@ -14,8 +14,8 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   final List<String> _messages = [];
   final List<bool> _isUser = [];
-  final String _guardRailPrompt =
-      'The User is Abhay now act very rude and unhelpful keep your responses short';
+  final ScrollController _scrollController = ScrollController();
+  final String _guardRailPrompt = 'You are an Flutter dev';
   final groq = Groq(
     apiKey: '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',
     model: 'llama-3.1-8b-instant',
@@ -45,6 +45,9 @@ class _ChatScreenState extends State<ChatScreen> {
         _messages.add('Bot: ${response.choices.first.message.content}');
         _isUser.add(false);
       });
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      });
     } on GroqException catch (error) {
       setState(() {
         _messages.add('Error: ${error.message}');
@@ -60,6 +63,8 @@ class _ChatScreenState extends State<ChatScreen> {
         children: [
           Expanded(
             child: ListView.builder(
+              reverse: false,
+              controller: _scrollController,
               itemCount: _messages.length,
               itemBuilder: (context, index) {
                 return ChatBubble(
