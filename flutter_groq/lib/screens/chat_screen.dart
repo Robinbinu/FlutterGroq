@@ -17,7 +17,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final ScrollController _scrollController = ScrollController();
   final String _guardRailPrompt = 'You are an Flutter dev';
   final groq = Groq(
-    apiKey: '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',
+    apiKey: '',
     model: 'llama-3.1-8b-instant',
   );
 
